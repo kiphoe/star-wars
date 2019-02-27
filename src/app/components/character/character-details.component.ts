@@ -9,7 +9,7 @@ import { charDetails, FilmList } from 'src/app/model';
   styleUrls: ['./character-details.component.css']
 })
 export class CharacterDetailsComponent implements OnInit {
-
+  private ngNavigatorShareService: NgNavigatorShareService;
   id: number
 
   character: charDetails
@@ -21,7 +21,9 @@ export class CharacterDetailsComponent implements OnInit {
 
   constructor(private swService: SWService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    ngNavigatorShareService: NgNavigatorShareService) {
+      this.ngNavigatorShareService = ngNavigatorShareService; }
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params.id;
@@ -88,6 +90,18 @@ export class CharacterDetailsComponent implements OnInit {
   goToLink(url: string, id: number) {
     console.log('/' + url + '/' + id);
     this.router.navigate(['/' + url + '/' + id]);
+  }
+  async shareApi() {
+    try{
+      const sharedResponse = await this.ngNavigatorShareService.share({
+        title:'`Web Articles and Tutorials',
+        text: 'Check out my blog — its worth looking.',
+        url: 'www.codershood.info'
+      });
+      console.log(sharedResponse);
+    } catch(error) {
+      console.log('You app is not shared, reason: ',error);
+    }
   }
 
 }
