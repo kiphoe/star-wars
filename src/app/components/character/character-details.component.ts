@@ -102,7 +102,7 @@ export class CharacterDetailsComponent implements OnInit {
       const sharedResponse = await this.ngNavigatorShareService.share({
         title:'Star Wars',
         text: 'Check out: ' + charName,
-        url: 'https://kiphoe.github.io/' + this.href
+        url: 'https://kiphoe.github.io' + this.href
       });
       console.log(sharedResponse);
     } catch(error) {
