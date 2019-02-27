@@ -1,3 +1,4 @@
+
 <table>
   <tr>
     <td>
@@ -80,18 +81,6 @@
   </tr>
   <tr>
     <td>
-      Films:
-    </td>
-    <td>
-  <tr *ngFor="let film of character.films">
-    <a (click)="goToLink('film',film.id)">
-      {{film.title}}
-    </a>
-  </tr>
-  </td>
-  </tr>
-  <tr>
-    <td>
       Species:
     </td>
     <td>
@@ -100,29 +89,67 @@
   </tr>
   </td>
   </tr>
-  <tr>
-    <td>
-      Vehicles:
-    </td>
-    <td>
-  <tr *ngFor="let vehicles of character.vehicles">
-    {{vehicles}}
-  </tr>
-  </td>
-  </tr>
-  <tr>
-    <td>
-      Starships:
-    </td>
-    <td>
-  <tr *ngFor="let starships of character.starships">
-    {{starships}}
-  </tr>
-  </td>
-  </tr>
 </table>
 </tr>
 </table>
+
+<table width= 750px >
+<tr >
+  <td>
+    Films:
+  </td>
+  <td style="text-align:center" *ngFor="let film of character.films">
+  <img src="https://starwars-visualguide.com/assets/img/films/{{film.id}}.jpg" alt="" class="logo">
+  </td>
+<tr >
+    <td>
+    </td>
+    <td style="text-align:center" *ngFor="let film of character.films">
+      <a (click)="goToLink('film',film.id)">
+        {{film.title}}
+      </a>
+      </td>
+</tr>
+</table>
+
+<table width= 750px >
+  <tr >
+    <td>
+      Vehicles:
+    </td>
+    <td style="text-align:center" *ngFor="let vehicles of character.vehicles">
+    <img src="https://starwars-visualguide.com/assets/img/vehicles/{{vehicles.id}}.jpg" alt="" class="logo">
+    </td>
+  <tr >
+      <td>
+      </td>
+      <td style="text-align:center" *ngFor="let vehicles of character.vehicles">
+        <a (click)="goToLink('vehicles',vehicles.id)">
+          {{vehicles}}
+        </a>
+        </td>
+  </tr>
+  </table>
+
+  <table width= 750px >
+    <tr >
+      <td>
+        Starships:
+      </td>
+      <td style="text-align:center" *ngFor="let starships of character.starships">
+      <img src="https://starwars-visualguide.com/assets/img/starships/{{starships.id}}.jpg" alt="" class="logo">
+      </td>
+    <tr >
+        <td>
+        </td>
+        <td style="text-align:center" *ngFor="let starships of character.starships">
+          <a (click)="goToLink('starships',starships.id)">
+            {{starships}}
+          </a>
+          </td>
+    </tr>
+    </table>
+
 <app-add-comment (onNewComment)="addNewComment($event)">
 </app-add-comment>
 

@@ -2,3 +2,11 @@
     width: 180.06;
     height: 320px;
 }
+.logo{
+    border-radius: 256px;
+    height: 60px;
+}
+
+.border {
+    border: solid 1px white;
+    } 
