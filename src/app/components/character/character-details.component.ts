@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SWService } from 'src/SW.Service';
 import { charDetails, FilmList } from 'src/app/model';
+import { NgNavigatorShareService } from 'ng-navigator-share';
 
 @Component({
   selector: 'app-character-details',
