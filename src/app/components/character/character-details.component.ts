@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SWService } from 'src/SW.Service';
-import { charDetails, FilmList } from 'src/app/model';
+import { charDetails, FilmList,Comment } from 'src/app/model';
 import { NgNavigatorShareService } from 'ng-navigator-share';
 
 @Component({
@@ -12,13 +12,14 @@ import { NgNavigatorShareService } from 'ng-navigator-share';
 export class CharacterDetailsComponent implements OnInit {
   private ngNavigatorShareService: NgNavigatorShareService;
   id: number
-
+  onNewComment = new EventEmitter<Comment>();
   character: charDetails
-
+  comments: Comment[] = []
   // Variable for link to another page
   // Film Variable
   filmList: FilmList
   filmLink: any[] = []
+  
 
   constructor(private swService: SWService,
     private router: Router,
