@@ -12,8 +12,10 @@ import { NgNavigatorShareService } from 'ng-navigator-share';
 export class CharacterDetailsComponent implements OnInit {
   private ngNavigatorShareService: NgNavigatorShareService;
   id: number
-  addNewComment = new EventEmitter<Comment>();
+  
   character: charDetails
+ //rubbish
+  addNewComment: string
   comments: Comment[] = []
   // Variable for link to another page
   // Film Variable
