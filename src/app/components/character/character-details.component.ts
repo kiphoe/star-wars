@@ -14,7 +14,9 @@ export class CharacterDetailsComponent implements OnInit {
   id: number
   
   character: charDetails
- //rubbish
+ //link variable
+  private href: string = "";
+  //rubbish
   comments: Comment[] = []
   // Variable for link to another page
   // Film Variable
@@ -29,9 +31,10 @@ export class CharacterDetailsComponent implements OnInit {
       this.ngNavigatorShareService = ngNavigatorShareService; }
 
   ngOnInit() {
+    this.href = this.router.url;
+    console.log('my url: ', this.router.url);
     this.id = this.activatedRoute.snapshot.params.id;
     console.log('test>>', this.id);
-    //this.name = this.activatedRoute.snapshot.params.url;
     this.getCharacterDetail();
   }
 
@@ -94,12 +97,12 @@ export class CharacterDetailsComponent implements OnInit {
     console.log('/' + url + '/' + id);
     this.router.navigate(['/' + url + '/' + id]);
   }
-  async shareApi() {
+  async shareApi(charName: string) {
     try{
       const sharedResponse = await this.ngNavigatorShareService.share({
-        title:'`Web Articles and Tutorials',
-        text: 'Check out my blog — its worth looking.',
-        url: 'www.codershood.info'
+        title:'Star Wars',
+        text: 'Check out: ' + charName,
+        url: 'https://kiphoe.github.io/' + this.href
       });
       console.log(sharedResponse);
     } catch(error) {
