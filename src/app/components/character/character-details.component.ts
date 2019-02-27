@@ -15,7 +15,6 @@ export class CharacterDetailsComponent implements OnInit {
   
   character: charDetails
  //rubbish
-  addNewComment: string
   comments: Comment[] = []
   // Variable for link to another page
   // Film Variable
@@ -108,4 +107,9 @@ export class CharacterDetailsComponent implements OnInit {
     }
   }
 
+
+  addNewComment(comm: Comment) {
+    //rubbish
+    this.comments.push(comm);
+  }
 }
