@@ -20,6 +20,10 @@ export class CategoryListComponent implements OnInit {
     if(category=='Characters'){
       this.router.navigate(['/people']);
     }
+    if(category=='Films'){
+      this.router.navigate(['/film']);
+
+    }
   }
 
 }

@@ -1,0 +1,114 @@
+<h3>{{character.name}}</h3>
+<table class=capitalize>
+  <tr>
+    <td>
+      Height:
+    </td>
+    <td>
+      {{character.height}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Mass:
+    </td>
+    <td>
+      {{character.mass}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Hair Color:
+    </td>
+    <td>
+      {{character.hairColour}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Skin Color:
+    </td>
+    <td>
+      {{character.skinColour}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Eye Color:
+    </td>
+    <td>
+      {{character.eyeColour}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Birth Year:
+    </td>
+    <td>
+      {{character.birthYear}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Gender:
+    </td>
+    <td>
+      {{character.gender}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Homeworld:
+    </td>
+    <td>
+      {{character.homeWorld}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Films:
+    </td>
+    <td>
+  <tr *ngFor="let film of character.films">
+    <a (click)="goToLink('film',film.id)">
+      {{film.title}}
+    </a>
+  </tr>
+  </td>
+  </tr>
+  <tr>
+    <td>
+      Species:
+    </td>
+    <td>
+  <tr *ngFor="let species of character.species">
+    {{species}}
+  </tr>
+  </td>
+  </tr>
+  <tr>
+    <td>
+      Vehicles:
+    </td>
+    <td>
+  <tr *ngFor="let vehicles of character.vehicles">
+    {{vehicles}}
+  </tr>
+  </td>
+  </tr>
+  <tr>
+    <td>
+      Starships:
+    </td>
+    <td>
+  <tr *ngFor="let starships of character.starships">
+    {{starships}}
+  </tr>
+  </td>
+  </tr>
+</table>
+
+<app-add-comment (onNewComment)="addNewComment($event)">
+</app-add-comment>
+
+<app-list-comment [comments]="comments"></app-list-comment>
