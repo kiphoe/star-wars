@@ -1,5 +1,18 @@
-<h3>{{character.name}}</h3>
-<img src="https://starwars-visualguide.com/assets/img/characters/{{id}}.jpg" alt="">
+<table>
+  <tr>
+    <td>
+        <h3>{{character.name}}</h3>
+    </td>
+    <td>
+      <button type="submit" (click)='shareApi(character.name)' mat-raised-button color="accent"> <mat-icon>share</mat-icon></button>
+    </td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td>
+<img src="https://starwars-visualguide.com/assets/img/characters/{{id}}.jpg" alt="" class="profile">
+</td>
 <table class=capitalize>
   <tr>
     <td>
@@ -108,9 +121,8 @@
   </td>
   </tr>
 </table>
-<u>
-  <strong (click)='shareApi(character.name)'>share</strong>
-</u>
+</tr>
+</table>
 <app-add-comment (onNewComment)="addNewComment($event)">
 </app-add-comment>
 
