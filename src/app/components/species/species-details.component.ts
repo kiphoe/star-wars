@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SWService } from 'src/SW.Service';
 import { SpeciesDetails } from 'src/app/model';
 import { CommonMethod } from 'src/app/common.method';
+import { NgNavigatorShareService } from 'ng-navigator-share';
 
 @Component({
   selector: 'app-species-details',
@@ -12,10 +13,11 @@ import { CommonMethod } from 'src/app/common.method';
 export class SpeciesDetailsComponent implements OnInit {
   // Variable for model
   species: SpeciesDetails
-
+//link variable
+private href: string = "";
   // Common Variable
   id: number
-
+  private ngNavigatorShareService: NgNavigatorShareService;
   // Variable for link to another page
   charLink: any[] = []
   filmLink: any[] = []
@@ -24,11 +26,13 @@ export class SpeciesDetailsComponent implements OnInit {
   constructor(private swService: SWService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private commonMethod: CommonMethod) { }
+    ngNavigatorShareService: NgNavigatorShareService,
+    private commonMethod: CommonMethod) {this.ngNavigatorShareService = ngNavigatorShareService; }
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params.id;
     this.getSpeciesDetail();
+    this.href = this.router.url;
   }
 
   getSpeciesDetail() {
@@ -101,5 +105,18 @@ export class SpeciesDetailsComponent implements OnInit {
       return;
     }
     this.router.navigate(['/' + url + '/' + id]);
+  }
+  //share function
+  async shareApi(specName: string) {
+    try {
+      const sharedResponse = await this.ngNavigatorShareService.share({
+        title: 'Star Wars',
+        text: 'Check out: ' + specName,
+        url: 'https://kiphoe.github.io/star-wars' + this.href
+      });
+      console.log(sharedResponse);
+    } catch (error) {
+      console.log('You app is not shared, reason: ', error);
+    }
   }
 }

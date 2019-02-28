@@ -43,9 +43,7 @@ export class CharacterDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.href = this.router.url;
-    console.log('my url: ', this.router.url);
     this.id = this.activatedRoute.snapshot.params.id;
-    console.log('test>>', this.id);
     this.getCharacterDetail();
   }
 
@@ -158,7 +156,7 @@ export class CharacterDetailsComponent implements OnInit {
     }
     this.router.navigate(['/' + url + '/' + id]);
   }
-
+  //share function
   async shareApi(charName: string) {
     try {
       const sharedResponse = await this.ngNavigatorShareService.share({

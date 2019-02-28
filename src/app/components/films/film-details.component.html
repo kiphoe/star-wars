@@ -1,13 +1,20 @@
-<h3>{{film.title}}</h3>
-<table class="capitalize" border="1">
+<table>
   <tr>
     <td>
-      Episode Id:
+        <h3>{{film.title}}</h3>
     </td>
     <td>
-      {{film.episode_id}}
+      <button type="submit" (click)='shareApi(film.title)' mat-raised-button color="accent"> <mat-icon>share</mat-icon></button>
     </td>
   </tr>
+</table>
+
+<table>
+  <tr>
+    <td>
+<img src="https://starwars-visualguide.com/assets/img/films/{{id}}.jpg" alt="" class="profile">
+</td>
+<table class=capitalize>
   <tr>
     <td>
       Opening Crawl:
@@ -52,30 +59,8 @@
   </tr>
   </td>
   </tr>
-  <tr>
-    <td>
-      Planets:
-    </td>
-    <td>
-  <tr *ngFor="let planet of film.planets">
-    <a (click)="goToLink('planets',planet.id)">
-      {{planet.name}}
-    </a>
-  </tr>
-  </td>
-  </tr>
-  <tr>
-    <td>
-      Starships:
-    </td>
-    <td>
-  <tr *ngFor="let starship of film.starships">
-    <a (click)="goToLink('starships',starship.id)">
-      {{starship.name}}
-    </a>
-  </tr>
-  </td>
-  </tr>
+</table>
+</tr>
 </table>
 
 
@@ -87,7 +72,7 @@
       Species:
     </td>
     <td style="text-align:center" *ngFor="let species of film.species">
-    <img src="https://starwars-visualguide.com/assets/img/species/{{species.id}}.jpg" alt="" class="logo">
+    <img src="https://starwars-visualguide.com/assets/img/species/{{species.id}}.jpg" alt="" class="logo" (click)="goToLink('species',species.id)">
     </td>
   <tr >
       <td>
@@ -106,7 +91,7 @@
         Vehicles:
       </td>
       <td style="text-align:center" *ngFor="let vehicles of film.vehicles">
-      <img src="https://starwars-visualguide.com/assets/img/vehicles/{{vehicles.id}}.jpg" alt="" class="logo">
+      <img src="https://starwars-visualguide.com/assets/img/vehicles/{{vehicles.id}}.jpg" alt="" class="logo" (click)="goToLink('vehicles',vehicles.id)">
       </td>
     <tr >
         <td>
@@ -125,18 +110,39 @@
           Starships:
         </td>
         <td style="text-align:center" *ngFor="let starship of film.starships">
-        <img src="https://starwars-visualguide.com/assets/img/starships/{{starships.id}}.jpg" alt="" class="logo">
+        <img src="https://starwars-visualguide.com/assets/img/starships/{{starships.id}}.jpg" alt="" class="logo" (click)="goToLink('starships',starships.id)">
         </td>
       <tr >
           <td>
           </td>
           <td style="text-align:center" *ngFor="let starship of film.starships">
             <a (click)="goToLink('starships',starships.id)">
-              {{starships}}
+              {{starship.name}}
             </a>
             </td>
       </tr>
       </table>
+
+      <table width= 750px >
+        <tr >
+          <td>
+            Planets:
+          </td>
+          <td style="text-align:center" *ngFor="let planet of film.planets">
+          <img src="https://starwars-visualguide.com/assets/img/planets/{{planet.id}}.jpg" alt="" class="logo"  (click)="goToLink('planets',planet.id)">
+          </td>
+        <tr >
+            <td>
+            </td>
+            <td style="text-align:center" *ngFor="let planet of film.planets">
+              
+                <a (click)="goToLink('planets',planet.id)">
+                  {{planet.name}}
+                </a>
+              
+              </td>
+        </tr>
+        </table>
   
   <app-add-comment (onNewComment)="addNewComment($event)">
   </app-add-comment>

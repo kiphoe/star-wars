@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SWService } from 'src/SW.Service';
 import { PlanetDetails } from 'src/app/model';
 import { CommonMethod } from 'src/app/common.method';
+import { NgNavigatorShareService } from 'ng-navigator-share';
 
 @Component({
   selector: 'app-planet-details',
@@ -16,7 +17,8 @@ export class PlanetDetailsComponent implements OnInit {
 
   // Common Variable
   id: number
-
+  private ngNavigatorShareService: NgNavigatorShareService;
+  private href: string = "";
   // Variable for link to another page
   filmLink: any[] = []
   planetLink: any[] = []
@@ -25,9 +27,11 @@ export class PlanetDetailsComponent implements OnInit {
   constructor(private swService: SWService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private commonMethod: CommonMethod) { }
+    ngNavigatorShareService: NgNavigatorShareService,
+    private commonMethod: CommonMethod) {this.ngNavigatorShareService = ngNavigatorShareService; }
 
   ngOnInit() {
+    this.href = this.router.url;
     this.id = this.activatedRoute.snapshot.params.id;
     this.getPlanetDetail()
   }
@@ -98,5 +102,19 @@ export class PlanetDetailsComponent implements OnInit {
       console.log(error)
     }
 
+  }
+
+  //share function
+  async shareApi(planetName: string) {
+    try {
+      const sharedResponse = await this.ngNavigatorShareService.share({
+        title: 'Star Wars',
+        text: 'Check out: ' + planetName,
+        url: 'https://kiphoe.github.io/star-wars' + this.href
+      });
+      console.log(sharedResponse);
+    } catch (error) {
+      console.log('You app is not shared, reason: ', error);
+    }
   }
 }

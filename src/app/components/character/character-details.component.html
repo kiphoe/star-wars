@@ -9,6 +9,7 @@
     </td>
   </tr>
 </table>
+
 <table>
   <tr>
     <td>
@@ -105,7 +106,7 @@
     Films:
   </td>
   <td style="text-align:center" *ngFor="let film of character.films">
-  <img src="https://starwars-visualguide.com/assets/img/films/{{film.id}}.jpg" alt="" class="logo">
+  <img src="https://starwars-visualguide.com/assets/img/films/{{film.id}}.jpg" alt="" class="logo" (click)="goToLink('film',film.id)">
   </td>
 <tr >
     <td>
@@ -124,7 +125,7 @@
       Vehicles:
     </td>
     <td style="text-align:center" *ngFor="let vehicles of character.vehicles">
-    <img src="https://starwars-visualguide.com/assets/img/vehicles/{{vehicles.id}}.jpg" alt="" class="logo">
+    <img src="https://starwars-visualguide.com/assets/img/vehicles/{{vehicles.id}}.jpg" alt="" class="logo" (click)="goToLink('vehicles',vehicles.id)">
     </td>
   <tr >
       <td>
@@ -143,7 +144,7 @@
         Starships:
       </td>
       <td style="text-align:center" *ngFor="let starships of character.starships">
-      <img src="https://starwars-visualguide.com/assets/img/starships/{{starships.id}}.jpg" alt="" class="logo">
+      <img src="https://starwars-visualguide.com/assets/img/starships/{{starships.id}}.jpg" alt="" class="logo" (click)="goToLink('starships',starships.id)">
       </td>
     <tr >
         <td>

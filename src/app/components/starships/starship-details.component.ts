@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SWService } from 'src/SW.Service';
 import { StarshipDetails } from 'src/app/model';
 import { CommonMethod } from 'src/app/common.method';
+import { NgNavigatorShareService } from 'ng-navigator-share';
 
 @Component({
   selector: 'app-starship-details',
@@ -10,10 +11,11 @@ import { CommonMethod } from 'src/app/common.method';
   styleUrls: ['./starship-details.component.css']
 })
 export class StarshipDetailsComponent implements OnInit {
-
+  private ngNavigatorShareService: NgNavigatorShareService;
   // Variable for model
   starship: StarshipDetails
-
+//link variable
+private href: string = "";
   // Common Variable
   id: number
 
@@ -24,9 +26,11 @@ export class StarshipDetailsComponent implements OnInit {
   constructor(private swService: SWService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private commonMethod: CommonMethod) { }
+    ngNavigatorShareService: NgNavigatorShareService,
+    private commonMethod: CommonMethod) {this.ngNavigatorShareService = ngNavigatorShareService; }
 
   ngOnInit() {
+    this.href = this.router.url;
     this.id = this.activatedRoute.snapshot.params.id;
     this.getStarshipDetail()
   }
@@ -97,5 +101,19 @@ export class StarshipDetailsComponent implements OnInit {
       return;
     }
     this.router.navigate(['/' + url + '/' + id]);
+  }
+
+  //share function
+  async shareApi(starshipName: string) {
+    try {
+      const sharedResponse = await this.ngNavigatorShareService.share({
+        title: 'Star Wars',
+        text: 'Check out: ' + starshipName,
+        url: 'https://kiphoe.github.io/star-wars' + this.href
+      });
+      console.log(sharedResponse);
+    } catch (error) {
+      console.log('You app is not shared, reason: ', error);
+    }
   }
 }
