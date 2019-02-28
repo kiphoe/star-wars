@@ -124,13 +124,13 @@
         <td>
           Starships:
         </td>
-        <td style="text-align:center" *ngFor="let starships of character.starships">
+        <td style="text-align:center" *ngFor="let starship of film.starships">
         <img src="https://starwars-visualguide.com/assets/img/starships/{{starships.id}}.jpg" alt="" class="logo">
         </td>
       <tr >
           <td>
           </td>
-          <td style="text-align:center" *ngFor="let starships of character.starships">
+          <td style="text-align:center" *ngFor="let starship of film.starships">
             <a (click)="goToLink('starships',starships.id)">
               {{starships}}
             </a>

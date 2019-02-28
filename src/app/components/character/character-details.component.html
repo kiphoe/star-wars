@@ -131,7 +131,7 @@
       </td>
       <td style="text-align:center" *ngFor="let vehicles of character.vehicles">
         <a (click)="goToLink('vehicles',vehicles.id)">
-          {{vehicles}}
+          {{vehicles.name}}
         </a>
         </td>
   </tr>
@@ -150,7 +150,7 @@
         </td>
         <td style="text-align:center" *ngFor="let starships of character.starships">
           <a (click)="goToLink('starships',starships.id)">
-            {{starships}}
+            {{starships.name}}
           </a>
           </td>
     </tr>
