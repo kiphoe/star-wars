@@ -88,10 +88,12 @@ private href: string = "";
 
       // Set homeworld link array
       this.planetLink = this.commonMethod.getUrlWithName(result.SpeciesDetail['homeworld'], this.planetLink)
-      if (this.planetLink.length == 0) {
+      if (result.SpeciesDetail['homeworld'] == null) {
         this.planetLink = [{ name: 'null', id: 0 }]
       }
-
+      else {
+        this.planetLink = this.commonMethod.getUrlWithName(result.SpeciesDetail['homeworld'], this.planetLink)
+      }
       // Set character.homeworld with new homeworld
       this.species.homeworld = this.planetLink
     })
