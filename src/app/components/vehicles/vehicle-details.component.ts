@@ -21,6 +21,8 @@ export class VehicleDetailsComponent implements OnInit {
   // Variable for link to another page
   charLink: any[] = []
   filmLink: any[] = []
+  //rubbish
+  comments: Comment[] = []
 
   constructor(private swService: SWService,
     private router: Router,
@@ -113,5 +115,9 @@ export class VehicleDetailsComponent implements OnInit {
     } catch (error) {
       console.log('You app is not shared, reason: ', error);
     }
+  }
+  addNewComment(comm: Comment) {
+    //rubbish
+    this.comments.push(comm);
   }
 }

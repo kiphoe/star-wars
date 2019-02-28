@@ -14,7 +14,8 @@ export class PlanetDetailsComponent implements OnInit {
 
   // Variable for model
   planet: PlanetDetails
-
+  //rubbish
+  comments: Comment[] = []
   // Common Variable
   id: number
   private ngNavigatorShareService: NgNavigatorShareService;
@@ -116,5 +117,9 @@ export class PlanetDetailsComponent implements OnInit {
     } catch (error) {
       console.log('You app is not shared, reason: ', error);
     }
+  }
+  addNewComment(comm: Comment) {
+    //rubbish
+    this.comments.push(comm);
   }
 }

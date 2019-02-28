@@ -15,6 +15,8 @@ export class SpeciesDetailsComponent implements OnInit {
   species: SpeciesDetails
 //link variable
 private href: string = "";
+  //rubbish
+  comments: Comment[] = []
   // Common Variable
   id: number
   private ngNavigatorShareService: NgNavigatorShareService;
@@ -118,5 +120,9 @@ private href: string = "";
     } catch (error) {
       console.log('You app is not shared, reason: ', error);
     }
+  }
+  addNewComment(comm: Comment) {
+    //rubbish
+    this.comments.push(comm);
   }
 }

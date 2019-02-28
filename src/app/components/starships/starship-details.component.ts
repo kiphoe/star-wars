@@ -16,6 +16,8 @@ export class StarshipDetailsComponent implements OnInit {
   starship: StarshipDetails
 //link variable
 private href: string = "";
+ //rubbish
+ comments: Comment[] = []
   // Common Variable
   id: number
 
@@ -115,5 +117,9 @@ private href: string = "";
     } catch (error) {
       console.log('You app is not shared, reason: ', error);
     }
+  }
+  addNewComment(comm: Comment) {
+    //rubbish
+    this.comments.push(comm);
   }
 }

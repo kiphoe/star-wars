@@ -24,6 +24,8 @@ export class FilmDetailsComponent implements OnInit {
   vehiclesLink: any[] = []
   starshipsLink: any[] = []
   planetLink: any[] = []
+   //rubbish
+   comments: Comment[] = []
 
   constructor(private swService: SWService,
     ngNavigatorShareService: NgNavigatorShareService,
@@ -157,5 +159,9 @@ async shareApi(filmName: string) {
   } catch (error) {
     console.log('You app is not shared, reason: ', error);
   }
+}
+addNewComment(comm: Comment) {
+  //rubbish
+  this.comments.push(comm);
 }
 }
