@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SpeciesList } from 'src/app/model';
 import { SWService } from 'src/SW.Service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { VehicleList } from 'src/app/model'
 
 @Component({
-  selector: 'app-species-list',
-  templateUrl: './species-list.component.html',
-  styleUrls: ['./species-list.component.css']
+  selector: 'app-vehicle-list',
+  templateUrl: './vehicle-list.component.html',
+  styleUrls: ['./vehicle-list.component.css']
 })
-export class SpeciesListComponent implements OnInit {
+export class VehicleListComponent implements OnInit {
 
   // Page variable
   totalCount: number;
@@ -16,25 +16,24 @@ export class SpeciesListComponent implements OnInit {
   page = [];
   pageNumber: string;
 
-  // Species variable
-  species: SpeciesList[] = []
+  // Vehicle variable
+  vehicles: VehicleList[] = []
 
   // Variable to hold all the array
   items: any[] = []
-
 
   constructor(private swService: SWService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.pageNumber = this.activatedRoute.snapshot.params.pageNumber;
-    this.getSpeciesList();
+    this.getVehicleList();
   }
 
-  // METHOD FOR SPECIES:
+  // METHOD FOR VEHICLES:
 
-  getSpeciesList() {
-    // Populating species
-    this.swService.getSpeciesList(this.pageNumber).then(result => {
+  getVehicleList() {
+    // Populating vehicles
+    this.swService.getVehicleList(this.pageNumber).then(result => {
       // Get the pages
       this.totalCount = result.Count;
       this.totalPage = Math.ceil(this.totalCount / 10);
@@ -43,19 +42,18 @@ export class SpeciesListComponent implements OnInit {
       }
 
       // Push the items
-      for (let i in result.SpeciesList) {
-        this.species.push({
-          name: result.SpeciesList[i].name,
-          id: parseInt(this.getIdFromUrl(result.SpeciesList[i].url))
+      for (let i in result.VehicleList) {
+        this.vehicles.push({
+          name: result.VehicleList[i].name,
+          id: parseInt(this.getIdFromUrl(result.VehicleList[i].url))
         })
       }
       // Set the items to populate the database
-      this.items = this.species;
+      this.items = this.vehicles;
     })
   }
 
-
-  // COMMON METHODS:
+   // COMMON METHODS:
 
   // Get Id to pass as the query string
   getIdFromUrl = function (value) {
@@ -66,14 +64,16 @@ export class SpeciesListComponent implements OnInit {
 
   // Navigate to details page
   goToDetails(id: number) {
-    this.router.navigate(['/species/' + id]);
+    this.router.navigate(['/vehicles/' + id]);
   }
 
   // Clicking on page number event handler
   pageChange(pageNumber: string) {
-    this.router.navigate(['/species/' + 'page/', pageNumber]).then(result => {
+    this.router.navigate(['/vehicles/' + 'page/', pageNumber]).then(result => {
       window.location.reload()
     });
     this.ngOnInit();
   }
+
+
 }

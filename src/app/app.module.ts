@@ -19,6 +19,14 @@ import { SpeciesListComponent } from './components/species/species-list.componen
 import { AddCommentComponent } from './components/comment/add-comment.component';
 import { ListCommentComponent } from './components/comment/list-comment.component';
 import { CommentService } from './comment.services';
+import { SpeciesDetailsComponent } from './components/species/species-details.component';
+import { StarshipDetailsComponent } from './components/starships/starship-details.component';
+import { StarshipListComponent } from './components/starships/starship-list.component';
+import { VehicleListComponent } from './components/vehicles/vehicle-list.component';
+import { VehicleDetailsComponent } from './components/vehicles/vehicle-details.component';
+import { PlanetDetailsComponent } from './components/planets/planet-details.component';
+import { PlanetListComponent } from './components/planets/planet-list.component';
+import { CommonMethod } from './common.method';
 
 
 @NgModule({
@@ -32,6 +40,13 @@ import { CommentService } from './comment.services';
     SpeciesListComponent,
     AddCommentComponent,
     ListCommentComponent,
+    SpeciesDetailsComponent,
+    StarshipDetailsComponent,
+    StarshipListComponent,
+    VehicleListComponent,
+    VehicleDetailsComponent,
+    PlanetDetailsComponent,
+    PlanetListComponent,
  
   ],
   imports: [
@@ -43,7 +58,7 @@ import { CommentService } from './comment.services';
     AppRouteModule,
     MatButtonModule
   ],
-  providers: [SWService, CommentService],
+  providers: [SWService, CommentService, CommonMethod],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

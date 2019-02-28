@@ -1,5 +1,5 @@
 <h3>{{film.title}}</h3>
-<table class=capitalize>
+<table class="capitalize" border="1">
   <tr>
     <td>
       Episode Id:
@@ -46,9 +46,9 @@
     </td>
     <td>
   <tr *ngFor="let character of film.characters">
-      <a href='http://localhost:4200/people/{{character.id}}'>
-        {{character.name}}
-      </a>
+    <a (click)="goToLink('people',character.id)">
+      {{character.name}}
+    </a>
   </tr>
   </td>
   </tr>
@@ -58,7 +58,9 @@
     </td>
     <td>
   <tr *ngFor="let planet of film.planets">
-    {{planet}}
+    <a (click)="goToLink('planets',planet.id)">
+      {{planet.name}}
+    </a>
   </tr>
   </td>
   </tr>
@@ -68,7 +70,9 @@
     </td>
     <td>
   <tr *ngFor="let starship of film.starships">
-    {{starship}}
+    <a (click)="goToLink('starships',starship.id)">
+      {{starship.name}}
+    </a>
   </tr>
   </td>
   </tr>
@@ -77,8 +81,10 @@
       Vehicles:
     </td>
     <td>
-  <tr *ngFor="let vehicle of film.vehicles">
-    {{vehicle}}
+  <tr *ngFor="let vehicles of film.vehicles">
+    <a (click)="goToLink('vehicles',vehicles.id)">
+      {{vehicles.name}}
+    </a>
   </tr>
   </td>
   </tr>
@@ -88,7 +94,9 @@
     </td>
     <td>
   <tr *ngFor="let species of film.species">
-    {{species}}
+    <a (click)="goToLink('species',species.id)">
+      {{species.name}}
+    </a>
   </tr>
   </td>
   </tr>

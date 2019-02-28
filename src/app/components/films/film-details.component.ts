@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SWService } from 'src/SW.Service';
-import { charDetails, FilmDetails, Character } from 'src/app/model';
+import { FilmDetails } from 'src/app/model';
+import { CommonMethod } from 'src/app/common.method';
 
 @Component({
   selector: 'app-film-details',
@@ -10,20 +11,22 @@ import { charDetails, FilmDetails, Character } from 'src/app/model';
 })
 export class FilmDetailsComponent implements OnInit {
   // Variable for model
-  character: charDetails
   film: FilmDetails
 
   // Common Variable
   id: number
 
   // Variable for link to another page
-  // Film Variable
-  charList: Character
   charLink: any[] = []
+  speciesLink: any[] = []
+  vehiclesLink: any[] = []
+  starshipsLink: any[] = []
+  planetLink: any[] = []
 
   constructor(private swService: SWService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private commonMethod: CommonMethod) { }
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.params.id;
@@ -49,34 +52,93 @@ export class FilmDetailsComponent implements OnInit {
         edited: result.FilmDetail['edited']
       }
 
-      // Set film link array
-      this.film.characters.forEach(charUrl => {
-        this.swService.getCharLink(charUrl).then(result => {
-          this.charList = {
-            name: result.name,
-            id: parseInt(this.getIdFromUrl(charUrl))
-          }
-          this.charLink.push(this.charList);
-        })
-      });
+      // Set character link array
+      if (this.film.characters == null) {
+        this.charLink[0] = '-'
+        return;
+      }
+      else {
+        this.film.characters.forEach(characterUrl => {
+          this.charLink = this.commonMethod.getUrlWithName(characterUrl, this.charLink)
+        });
+      }
 
       // Set character.film with new film array
       this.film.characters = this.charLink;
-      console.log(this.film.characters)
 
+      // Set planets link array
+      if (this.film.planets == null) {
+        this.planetLink[0] = '-'
+        return;
+      }
+      else {
+        this.film.planets.forEach(planetUrl => {
+          this.planetLink = this.commonMethod.getUrlWithName(planetUrl, this.planetLink)
+        });
+      }
+
+      // Set character.homeworld with new homeworld
+      this.film.planets = this.planetLink
+
+      // Set species link array
+      if (this.film.species == null) {
+        this.speciesLink[0] = '-'
+        return;
+      }
+      else {
+        this.film.species.forEach(speciesUrl => {
+          if (speciesUrl == null) {
+            this.speciesLink[0] = 'empty'
+            return;
+          }
+          this.speciesLink = this.commonMethod.getUrlWithName(speciesUrl, this.speciesLink)
+        });
+      }
+
+      // Set character.species with new species array
+      this.film.species = this.speciesLink
+
+      // Set vehicles link array
+      if (this.film.vehicles == null) {
+        this.vehiclesLink[0] = '-'
+        return;
+      }
+      else {
+        this.film.vehicles.forEach(vehiclesUrl => {
+          this.vehiclesLink = this.commonMethod.getUrlWithName(vehiclesUrl, this.vehiclesLink)
+        });
+      }
+
+      // Set character.film with new film array
+      this.film.vehicles = this.vehiclesLink
+
+      if (this.film.starships == null) {
+        this.starshipsLink[0] = '-'
+        return;
+      }
+      else {
+        // Set starships link array
+        this.film.starships.forEach(starshipsUrl => {
+          this.starshipsLink = this.commonMethod.getUrlWithName(starshipsUrl, this.starshipsLink)
+        });
+      }
+
+      // Set character.starships with new starships array
+      this.film.starships = this.starshipsLink
     })
       .catch(error => {
         console.log("An error occured");
         console.error(error);
-        this.character = null
+        this.film = null
       })
   }
 
-  // Get Id to pass as the query string
-  getIdFromUrl = function (value) {
-    var id = value.match(/([0-9])+/g);
-    id = id[0];
-    return id;
+  // Navigate to another page
+  goToLink(url: string, id: number) {
+    if (id == 0) {
+      return;
+    }
+    this.router.navigate(['/' + url + '/' + id]);
   }
 
 }

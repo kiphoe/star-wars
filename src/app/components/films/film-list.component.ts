@@ -77,7 +77,6 @@ export class FilmListComponent implements OnInit {
 
   // Navigate to details page
   goToDetails(id: number) {
-    console.log('/film/' + id);
     this.router.navigate(['/film/' + id]);
   }
 

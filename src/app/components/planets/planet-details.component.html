@@ -1,0 +1,91 @@
+<h3>{{planet.name}}</h3>
+<table class="capitalize" border="1">
+  <tr>
+    <td>
+      Rotation Period:
+    </td>
+    <td>
+      {{planet.rotation_period}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Orbital Period:
+    </td>
+    <td>
+      {{planet.orbital_period}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Diameter:
+    </td>
+    <td>
+      {{planet.diameter}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Climate:
+    </td>
+    <td>
+      {{planet.climate}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Gravity:
+    </td>
+    <td>
+      {{planet.gravity}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Terrain:
+    </td>
+    <td>
+      {{planet.terrain}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Surface Water:
+    </td>
+    <td>
+      {{planet.surface_water}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Population:
+    </td>
+    <td>
+      {{planet.population}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Residents:
+    </td>
+    <td>
+  <tr *ngFor="let resident of planet.residents">
+    <a (click)="goToLink('people',resident.id)">
+      {{resident.name}}
+    </a>
+  </tr>
+  </td>
+  </tr>
+  <tr>
+    <td>
+      Films:
+    </td>
+    <td>
+  <tr *ngFor="let film of planet.films">
+    <a (click)="goToLink('film',film.id)">
+      {{film.title}}
+    </a>
+  </tr>
+  </td>
+  </tr>
+</table>

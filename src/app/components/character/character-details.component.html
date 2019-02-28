@@ -76,7 +76,11 @@
       Homeworld:
     </td>
     <td>
-      {{character.homeWorld}}
+      <tr *ngFor="let planet of character.homeWorld">
+        <a (click)="goToLink('planets',planet.id)">
+          {{planet.name}}
+        </a>
+      </tr>
     </td>
   </tr>
   <tr>
@@ -85,7 +89,9 @@
     </td>
     <td>
   <tr *ngFor="let species of character.species">
-    {{species}}
+    <a (click)="goToLink('species',species.id)">
+      {{species.name}}
+    </a>
   </tr>
   </td>
   </tr>

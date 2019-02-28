@@ -1,0 +1,103 @@
+<h3>{{species.name}}</h3>
+<table class="capitalize" border="1">
+  <tr>
+    <td>
+      Classification:
+    </td>
+    <td>
+      {{species.classification}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Designation:
+    </td>
+    <td>
+      {{species.designation}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Average Height:
+    </td>
+    <td>
+      {{species.average_height}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Skin Colors:
+    </td>
+    <td>
+      {{species.skin_colors}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Hair Colors:
+    </td>
+    <td>
+      {{species.hair_colors}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Eye Colors:
+    </td>
+    <td>
+      {{species.eye_colors}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Average Lifespan:
+    </td>
+    <td>
+      {{species.average_lifespan}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Homeworld:
+    </td>
+    <td>
+  <tr *ngFor="let planet of species.homeworld">
+    <a (click)="goToLink('planets',planet.id)">
+      {{planet.name}}
+    </a>
+  </tr>
+  </td>
+  </tr>
+  <tr>
+    <td>
+      Language:
+    </td>
+    <td>
+      {{species.language}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      People:
+    </td>
+    <td>
+  <tr *ngFor="let people of species.people">
+    <a (click)="goToLink('people',people.id)">
+      {{people.name}}
+    </a>
+  </tr>
+  </td>
+  </tr>
+  <tr>
+    <td>
+      Films:
+    </td>
+    <td>
+  <tr *ngFor="let film of species.films">
+    <a (click)="goToLink('film',film.id)">
+      {{film.title}}
+    </a>
+  </tr>
+  </td>
+  </tr>
+</table>

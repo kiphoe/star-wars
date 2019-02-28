@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SpeciesList } from 'src/app/model';
 import { SWService } from 'src/SW.Service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { StarshipList } from 'src/app/model';
 
 @Component({
-  selector: 'app-species-list',
-  templateUrl: './species-list.component.html',
-  styleUrls: ['./species-list.component.css']
+  selector: 'app-starship-list',
+  templateUrl: './starship-list.component.html',
+  styleUrls: ['./starship-list.component.css']
 })
-export class SpeciesListComponent implements OnInit {
+export class StarshipListComponent implements OnInit {
 
   // Page variable
   totalCount: number;
@@ -16,25 +16,24 @@ export class SpeciesListComponent implements OnInit {
   page = [];
   pageNumber: string;
 
-  // Species variable
-  species: SpeciesList[] = []
+  // Starship variable
+  starships: StarshipList[] = []
 
   // Variable to hold all the array
   items: any[] = []
-
 
   constructor(private swService: SWService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.pageNumber = this.activatedRoute.snapshot.params.pageNumber;
-    this.getSpeciesList();
+    this.getStarshipList();
   }
 
-  // METHOD FOR SPECIES:
+  // METHOD FOR STARSHIPS:
 
-  getSpeciesList() {
-    // Populating species
-    this.swService.getSpeciesList(this.pageNumber).then(result => {
+  getStarshipList() {
+    // Populating starships
+    this.swService.getStarshipList(this.pageNumber).then(result => {
       // Get the pages
       this.totalCount = result.Count;
       this.totalPage = Math.ceil(this.totalCount / 10);
@@ -43,19 +42,19 @@ export class SpeciesListComponent implements OnInit {
       }
 
       // Push the items
-      for (let i in result.SpeciesList) {
-        this.species.push({
-          name: result.SpeciesList[i].name,
-          id: parseInt(this.getIdFromUrl(result.SpeciesList[i].url))
+      for (let i in result.StarshipList) {
+        this.starships.push({
+          name: result.StarshipList[i].name,
+          id: parseInt(this.getIdFromUrl(result.StarshipList[i].url))
         })
       }
       // Set the items to populate the database
-      this.items = this.species;
+      this.items = this.starships;
     })
   }
 
 
-  // COMMON METHODS:
+   // COMMON METHODS:
 
   // Get Id to pass as the query string
   getIdFromUrl = function (value) {
@@ -66,14 +65,15 @@ export class SpeciesListComponent implements OnInit {
 
   // Navigate to details page
   goToDetails(id: number) {
-    this.router.navigate(['/species/' + id]);
+    this.router.navigate(['/starships/' + id]);
   }
 
   // Clicking on page number event handler
   pageChange(pageNumber: string) {
-    this.router.navigate(['/species/' + 'page/', pageNumber]).then(result => {
+    this.router.navigate(['/starships/' + 'page/', pageNumber]).then(result => {
       window.location.reload()
     });
     this.ngOnInit();
   }
+
 }

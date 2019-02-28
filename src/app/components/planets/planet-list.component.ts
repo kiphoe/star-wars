@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SpeciesList } from 'src/app/model';
 import { SWService } from 'src/SW.Service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { PlanetList } from 'src/app/model';
 
 @Component({
-  selector: 'app-species-list',
-  templateUrl: './species-list.component.html',
-  styleUrls: ['./species-list.component.css']
+  selector: 'app-planet-list',
+  templateUrl: './planet-list.component.html',
+  styleUrls: ['./planet-list.component.css']
 })
-export class SpeciesListComponent implements OnInit {
+export class PlanetListComponent implements OnInit {
+
 
   // Page variable
   totalCount: number;
@@ -16,25 +17,19 @@ export class SpeciesListComponent implements OnInit {
   page = [];
   pageNumber: string;
 
-  // Species variable
-  species: SpeciesList[] = []
-
-  // Variable to hold all the array
-  items: any[] = []
-
+  // Character variable
+  planets: PlanetList[] = []
 
   constructor(private swService: SWService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.pageNumber = this.activatedRoute.snapshot.params.pageNumber;
-    this.getSpeciesList();
+    this.getPlanetList();
   }
-
-  // METHOD FOR SPECIES:
-
-  getSpeciesList() {
-    // Populating species
-    this.swService.getSpeciesList(this.pageNumber).then(result => {
+  // Get the List of character
+  getPlanetList() {
+    // Set the common variables
+    this.swService.getPlanetList(this.pageNumber).then(result => {
       // Get the pages
       this.totalCount = result.Count;
       this.totalPage = Math.ceil(this.totalCount / 10);
@@ -43,17 +38,14 @@ export class SpeciesListComponent implements OnInit {
       }
 
       // Push the items
-      for (let i in result.SpeciesList) {
-        this.species.push({
-          name: result.SpeciesList[i].name,
-          id: parseInt(this.getIdFromUrl(result.SpeciesList[i].url))
+      for (let i in result.PlanetList) {
+        this.planets.push({
+          name: result.PlanetList[i].name,
+          id: parseInt(this.getIdFromUrl(result.PlanetList[i].url))
         })
       }
-      // Set the items to populate the database
-      this.items = this.species;
     })
   }
-
 
   // COMMON METHODS:
 
@@ -66,12 +58,12 @@ export class SpeciesListComponent implements OnInit {
 
   // Navigate to details page
   goToDetails(id: number) {
-    this.router.navigate(['/species/' + id]);
+    this.router.navigate(['/planets/' + id]);
   }
 
   // Clicking on page number event handler
   pageChange(pageNumber: string) {
-    this.router.navigate(['/species/' + 'page/', pageNumber]).then(result => {
+    this.router.navigate(['/planets/' + 'page/', pageNumber]).then(result => {
       window.location.reload()
     });
     this.ngOnInit();
