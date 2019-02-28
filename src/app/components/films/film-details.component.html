@@ -76,28 +76,69 @@
   </tr>
   </td>
   </tr>
-  <tr>
-    <td>
-      Vehicles:
-    </td>
-    <td>
-  <tr *ngFor="let vehicles of film.vehicles">
-    <a (click)="goToLink('vehicles',vehicles.id)">
-      {{vehicles.name}}
-    </a>
-  </tr>
-  </td>
-  </tr>
-  <tr>
+</table>
+
+
+
+
+<table width= 750px >
+  <tr >
     <td>
       Species:
     </td>
-    <td>
-  <tr *ngFor="let species of film.species">
-    <a (click)="goToLink('species',species.id)">
-      {{species.name}}
-    </a>
+    <td style="text-align:center" *ngFor="let species of film.species">
+    <img src="https://starwars-visualguide.com/assets/img/species/{{species.id}}.jpg" alt="" class="logo">
+    </td>
+  <tr >
+      <td>
+      </td>
+      <td style="text-align:center" *ngFor="let species of film.species">
+        <a (click)="goToLink('species',species.id)">
+          {{species.name}}
+        </a>
+        </td>
   </tr>
-  </td>
-  </tr>
-</table>
+  </table>
+  
+  <table width= 750px >
+    <tr >
+      <td>
+        Vehicles:
+      </td>
+      <td style="text-align:center" *ngFor="let vehicles of film.vehicles">
+      <img src="https://starwars-visualguide.com/assets/img/vehicles/{{vehicles.id}}.jpg" alt="" class="logo">
+      </td>
+    <tr >
+        <td>
+        </td>
+        <td style="text-align:center" *ngFor="let vehicles of film.vehicles">
+          <a (click)="goToLink('vehicles',vehicles.id)">
+            {{vehicles.name}}
+          </a>
+          </td>
+    </tr>
+    </table>
+  
+    <table width= 750px >
+      <tr >
+        <td>
+          Starships:
+        </td>
+        <td style="text-align:center" *ngFor="let starships of character.starships">
+        <img src="https://starwars-visualguide.com/assets/img/starships/{{starships.id}}.jpg" alt="" class="logo">
+        </td>
+      <tr >
+          <td>
+          </td>
+          <td style="text-align:center" *ngFor="let starships of character.starships">
+            <a (click)="goToLink('starships',starships.id)">
+              {{starships}}
+            </a>
+            </td>
+      </tr>
+      </table>
+  
+  <app-add-comment (onNewComment)="addNewComment($event)">
+  </app-add-comment>
+  
+  <app-list-comment [comments]="comments"></app-list-comment>

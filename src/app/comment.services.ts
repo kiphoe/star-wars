@@ -12,8 +12,8 @@ export class CommentService{
 
     constructor() {
         this.contactDB= new Dexie('PublicComment');
-        this.contactDB.version(1).stores({
-            comment:'comment'
+        this.contactDB.version(2).stores({
+            comment:'++id,url,comment'
         })
     }
     
@@ -30,7 +30,7 @@ export class CommentService{
         })
         
     }
-    getCommentWithPromise(): Promise<Comment[]>{
-        return(this.contactDB.table('comment').toArray());
+    getCommentWithPromise(url: string): Promise<Comment[]>{
+        return(this.contactDB.table('comment').where('url').equalsIgnoreCase(url).toArray());
     }
 }
