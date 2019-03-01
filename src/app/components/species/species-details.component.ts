@@ -74,7 +74,7 @@ private href: string = "";
 
       // Set character link array
       if (this.species.people == null) {
-        this.charLink[0] = '-'
+        this.charLink[0] = 'empty'
         return;
       }
       else {

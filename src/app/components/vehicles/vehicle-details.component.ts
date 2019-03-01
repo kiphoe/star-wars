@@ -59,7 +59,7 @@ export class VehicleDetailsComponent implements OnInit {
       // Set film link array
       if (this.vehicle.films.length == 0) {
         this.filmLink = [{
-          title: '-',
+          title: 'empty',
           id: 0
         }]
       }
@@ -75,7 +75,7 @@ export class VehicleDetailsComponent implements OnInit {
       // Set character link array
       if (this.vehicle.pilots.length == 0) {
         this.charLink = [{
-          name: '-',
+          name: 'empty',
           id: 0
         }]
       }

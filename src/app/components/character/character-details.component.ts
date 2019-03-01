@@ -33,6 +33,8 @@ export class CharacterDetailsComponent implements OnInit {
   starshipsLink: any[] = []
   homeWorldLink: any[] = []
 
+  check:  boolean
+
 
   constructor(private swService: SWService,
     private router: Router,
@@ -45,6 +47,10 @@ export class CharacterDetailsComponent implements OnInit {
     this.href = this.router.url;
     this.id = this.activatedRoute.snapshot.params.id;
     this.getCharacterDetail();
+
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      this.check= true;
+    }
   }
 
   getCharacterDetail() {
@@ -74,7 +80,7 @@ export class CharacterDetailsComponent implements OnInit {
       // Set film link array
       if (this.character.films.length == 0) {
         this.filmLink = [{
-          title: '-',
+          title: 'empty',
           id: 0
         }]
       }
@@ -90,7 +96,7 @@ export class CharacterDetailsComponent implements OnInit {
       // Set species link array
       if (this.character.species.length == 0) {
         this.speciesLink = [{
-          name: '-',
+          name: 'empty',
           id: 0
         }]
       }
@@ -106,7 +112,7 @@ export class CharacterDetailsComponent implements OnInit {
       // Set vehicles link array
       if (this.character.vehicles.length == 0) {
         this.vehiclesLink = [{
-          name: '-',
+          name: 'empty',
           id: 0
         }]
       }
@@ -122,7 +128,7 @@ export class CharacterDetailsComponent implements OnInit {
       // Set starships link array
       if (this.character.starships.length == 0) {
         this.starshipsLink = [{
-          name: '-',
+          name: 'empty',
           id: 0
         }]
       }

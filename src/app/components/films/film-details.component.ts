@@ -60,7 +60,7 @@ export class FilmDetailsComponent implements OnInit {
 
       // Set character link array
       if (this.film.characters == null) {
-        this.charLink[0] = '-'
+        this.charLink[0] = 'empty'
         return;
       }
       else {
@@ -74,7 +74,7 @@ export class FilmDetailsComponent implements OnInit {
 
       // Set planets link array
       if (this.film.planets == null) {
-        this.planetLink[0] = '-'
+        this.planetLink[0] = 'empty'
         return;
       }
       else {
@@ -88,7 +88,7 @@ export class FilmDetailsComponent implements OnInit {
 
       // Set species link array
       if (this.film.species == null) {
-        this.speciesLink[0] = '-'
+        this.speciesLink[0] = 'empty'
         return;
       }
       else {
@@ -106,7 +106,7 @@ export class FilmDetailsComponent implements OnInit {
 
       // Set vehicles link array
       if (this.film.vehicles == null) {
-        this.vehiclesLink[0] = '-'
+        this.vehiclesLink[0] = 'empty'
         return;
       }
       else {
@@ -119,7 +119,7 @@ export class FilmDetailsComponent implements OnInit {
       this.film.vehicles = this.vehiclesLink
 
       if (this.film.starships == null) {
-        this.starshipsLink[0] = '-'
+        this.starshipsLink[0] = 'empty'
         return;
       }
       else {

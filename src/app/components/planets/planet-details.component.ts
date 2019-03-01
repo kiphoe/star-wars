@@ -58,7 +58,7 @@ export class PlanetDetailsComponent implements OnInit {
       // Set film link array
       if (this.planet.films.length == 0) {
         this.filmLink = [{
-          title: '-',
+          title: 'empty',
           id: 0
         }]
       }
@@ -73,7 +73,7 @@ export class PlanetDetailsComponent implements OnInit {
 
       // Set character link array
       if (this.planet.residents == null) {
-        this.planetLink[0] = '-'
+        this.planetLink[0] = 'empty'
         return;
       }
       else {

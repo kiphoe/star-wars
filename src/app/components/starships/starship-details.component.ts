@@ -62,7 +62,7 @@ private href: string = "";
       // Set film link array
       if (this.starship.films.length == 0) {
         this.filmLink = [{
-          title: '-',
+          title: 'empty',
           id: 0
         }]
       }
@@ -77,7 +77,7 @@ private href: string = "";
 
       if (this.starship.pilots.length == 0) {
         this.charLink = [{
-          name: '-',
+          name: 'empty',
           id: 0
         }]
       }
