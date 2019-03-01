@@ -47,10 +47,6 @@ export class CharacterDetailsComponent implements OnInit {
     this.href = this.router.url;
     this.id = this.activatedRoute.snapshot.params.id;
     this.getCharacterDetail();
-
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      this.check= true;
-    }
   }
 
   getCharacterDetail() {
