@@ -3,19 +3,12 @@
 <!--Current form is declared addrForm-->
 <form #commForm="ngForm" (ngSubmit)="processForm(commForm)">
   <table>
-    <tr>
-      <td>
-        Valid: {{ commForm.valid }}
-      </td>
-      <td>
-        Invalid: {{ commForm.invalid }}
-      </td>
-    </tr>
+   
     <tr>
       <td>Write a comment: </td>
       <td>
           <mat-form-field>
-        <input matInput type="text" name="comment"  placeholder="talk cock" ngModel required>
+        <input matInput type="text" name="comment"  placeholder="Please write a comment" ngModel required>
       </mat-form-field>
       </td>
     </tr>

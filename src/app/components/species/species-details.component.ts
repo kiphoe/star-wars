@@ -87,7 +87,6 @@ private href: string = "";
       this.species.people = this.charLink;
 
       // Set homeworld link array
-      this.planetLink = this.commonMethod.getUrlWithName(result.SpeciesDetail['homeworld'], this.planetLink)
       if (result.SpeciesDetail['homeworld'] == null) {
         this.planetLink = [{ name: 'null', id: 0 }]
       }
