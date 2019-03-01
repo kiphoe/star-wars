@@ -1,9 +1,9 @@
 <h3>Films</h3>
 
-<mat-list>
+<mat-nav-list>
   <mat-list-item *ngFor="let c of films" (click)="goToDetails(c.id)" class="capitalize">
     {{c.title}}
   </mat-list-item>
-</mat-list>
+</mat-nav-list>
 
 <button *ngFor="let num of page" (click)="pageChange(num)">{{num}}</button>

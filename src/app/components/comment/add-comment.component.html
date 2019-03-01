@@ -2,18 +2,15 @@
 <!--clicking on Add button will invoke ngSubmit as the button has type="submit"-->
 <!--Current form is declared addrForm-->
 <form #commForm="ngForm" (ngSubmit)="processForm(commForm)">
+  
   <table>
-   
     <tr>
       <td>Write a comment: </td>
       <td>
           <mat-form-field>
-        <input matInput type="text" name="comment"  placeholder="Please write a comment" ngModel required>
+        <input matInput type="text" name="comment"  placeholder="Please write a comment*" ngModel required>
       </mat-form-field>
       </td>
-    </tr>
-    <tr>
-      <td></td>
       <td>
         <button type="submit" mat-raised-button color="accent" [disabled]="commForm.invalid">
             <mat-icon>library_add</mat-icon>

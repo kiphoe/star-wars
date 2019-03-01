@@ -1,72 +1,88 @@
-<h3>{{species.name}}</h3>
-<table class="capitalize" border="1">
+<table>
   <tr>
     <td>
-      Classification:
+      <h3>{{species.name}}</h3>
     </td>
     <td>
-      {{species.classification}}
+      <button type="submit" (click)='shareApi(species.name)' mat-raised-button color="accent">
+        <mat-icon>share</mat-icon>
+      </button>
     </td>
   </tr>
+</table>
+<table>
   <tr>
     <td>
-      Designation:
+      <img src="https://starwars-visualguide.com/assets/img/species/{{id}}.jpg" onError="this.src='images/noImage.png'" alt="" class="profile">
     </td>
-    <td>
-      {{species.designation}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Average Height:
-    </td>
-    <td>
-      {{species.average_height}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Skin Colors:
-    </td>
-    <td>
-      {{species.skin_colors}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Hair Colors:
-    </td>
-    <td>
-      {{species.hair_colors}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Eye Colors:
-    </td>
-    <td>
-      {{species.eye_colors}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Average Lifespan:
-    </td>
-    <td>
-      {{species.average_lifespan}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Homeworld:
-    </td>
-    <td>
-  <tr *ngFor="let planet of species.homeworld">
-    <a (click)="goToLink('planets',planet.id)">
-      {{planet.name}}
-    </a>
-  </tr>
-  </td>
+    <table>
+      <tr>
+        <td>
+          Classification:
+        </td>
+        <td>
+          {{species.classification}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Designation:
+        </td>
+        <td>
+          {{species.designation}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Average Height:
+        </td>
+        <td>
+          {{species.average_height}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Skin Colors:
+        </td>
+        <td>
+          {{species.skin_colors}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Hair Colors:
+        </td>
+        <td>
+          {{species.hair_colors}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Eye Colors:
+        </td>
+        <td>
+          {{species.eye_colors}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Average Lifespan:
+        </td>
+        <td>
+          {{species.average_lifespan}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Homeworld:
+        </td>
+        <td>
+      <tr *ngFor="let planet of species.homeworld" class="linkable">
+        <a (click)="goToLink('planets',planet.id)">
+          {{planet.name}}
+        </a>
+      </tr>
+      </td>
   </tr>
   <tr>
     <td>
@@ -76,28 +92,50 @@
       {{species.language}}
     </td>
   </tr>
+</table>
+</tr>
+</table>
+
+<table width=750px>
   <tr>
     <td>
       People:
     </td>
+    <td style="text-align:center" *ngFor="let people of species.people">
+      <img src="https://starwars-visualguide.com/assets/img/characters/{{people.id}}.jpg" onError="this.src='images/noImage.png'" alt="" class="logo"
+        (click)="goToLink('people',people.id)">
+    </td>
+  <tr>
     <td>
-  <tr *ngFor="let people of species.people">
-    <a (click)="goToLink('people',people.id)">
-      {{people.name}}
-    </a>
+    </td>
+    <td style="text-align:center" *ngFor="let people of species.people">
+      <a (click)="goToLink('people',people.id)">
+        {{people.name}}
+      </a>
+    </td>
   </tr>
-  </td>
-  </tr>
+</table>
+
+<table width=750px>
   <tr>
     <td>
       Films:
     </td>
+    <td style="text-align:center" *ngFor="let film of species.films">
+      <img src="https://starwars-visualguide.com/assets/img/films/{{film.id}}.jpg" onError="this.src='images/noImage.png'" alt="" class="logo">
+    </td>
+  <tr>
     <td>
-  <tr *ngFor="let film of species.films">
-    <a (click)="goToLink('film',film.id)">
-      {{film.title}}
-    </a>
-  </tr>
-  </td>
+    </td>
+    <td style="text-align:center" *ngFor="let film of species.films">
+      <a (click)="goToLink('film',film.id)">
+        {{film.title}}
+      </a>
+    </td>
   </tr>
 </table>
+
+<app-add-comment (onNewComment)="addNewComment($event)">
+  </app-add-comment>
+  
+  <app-list-comment [comments]="comments"></app-list-comment>

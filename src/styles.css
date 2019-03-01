@@ -1,14 +1,16 @@
 .mat-toolbar.mat-primary{
-    background: #ffd700;
-    color: black;
+    background: black;
+    color: #ffd700;
+    font-size: 30px;
+    padding: 15px 0;
 }
 
 body {
-    background-image: url("/assets/background/stormtroopers.jpg"); 
+    background-image: url("/assets/background/background.jpg"); 
     min-height: 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
-    color: #ffd700;
+    color: black;
    }

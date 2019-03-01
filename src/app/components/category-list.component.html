@@ -1,11 +1,11 @@
 
 <h3>Category</h3>
 
-<mat-list>
+<mat-nav-list>
   <!-- cities is from city-list.component.ts-->
   <mat-list-item *ngFor="let c of Categories" (click)="getCategory (c)">
     {{c | uppercase}}
   </mat-list-item>
-</mat-list>
+</mat-nav-list>
 
 

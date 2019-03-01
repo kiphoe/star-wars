@@ -13,7 +13,7 @@
 <table>
   <tr>
     <td>
-<img src="https://starwars-visualguide.com/assets/img/characters/{{id}}.jpg" alt="" class="profile">
+<img src="https://starwars-visualguide.com/assets/img/characters/{{id}}.jpg" onError="this.src='images/noImage.png'" alt="" class="profile">
 </td>
 <table class=capitalize>
   <tr>
@@ -77,7 +77,7 @@
       Homeworld:
     </td>
     <td>
-      <tr *ngFor="let planet of character.homeWorld">
+      <tr *ngFor="let planet of character.homeWorld" class="linkable">
         <a (click)="goToLink('planets',planet.id)">
           {{planet.name}}
         </a>
@@ -89,7 +89,7 @@
       Species:
     </td>
     <td>
-  <tr *ngFor="let species of character.species">
+  <tr *ngFor="let species of character.species" class="linkable">
     <a (click)="goToLink('species',species.id)">
       {{species.name}}
     </a>
@@ -106,7 +106,7 @@
     Films:
   </td>
   <td style="text-align:center" *ngFor="let film of character.films">
-  <img src="https://starwars-visualguide.com/assets/img/films/{{film.id}}.jpg" alt="" class="logo" (click)="goToLink('film',film.id)">
+  <img src="https://starwars-visualguide.com/assets/img/films/{{film.id}}.jpg" alt="" class="logo" onError="this.src='images/noImage.png'" (click)="goToLink('film',film.id)">
   </td>
 <tr >
     <td>
@@ -125,7 +125,7 @@
       Vehicles:
     </td>
     <td style="text-align:center" *ngFor="let vehicles of character.vehicles">
-    <img src="https://starwars-visualguide.com/assets/img/vehicles/{{vehicles.id}}.jpg" alt="" class="logo" (click)="goToLink('vehicles',vehicles.id)">
+    <img src="https://starwars-visualguide.com/assets/img/vehicles/{{vehicles.id}}.jpg" alt="" class="logo" onError="this.src='images/noImage.png'" (click)="goToLink('vehicles',vehicles.id)">
     </td>
   <tr >
       <td>
@@ -143,15 +143,15 @@
       <td>
         Starships:
       </td>
-      <td style="text-align:center" *ngFor="let starships of character.starships">
-      <img src="https://starwars-visualguide.com/assets/img/starships/{{starships.id}}.jpg" alt="" class="logo" (click)="goToLink('starships',starships.id)">
+      <td style="text-align:center" *ngFor="let starship of character.starships">
+      <img src="https://starwars-visualguide.com/assets/img/starships/{{starship.id}}.jpg" alt="" class="logo" onError="this.src='images/noImage.png'" (click)="goToLink('starships',starship.id)">
       </td>
     <tr >
         <td>
         </td>
-        <td style="text-align:center" *ngFor="let starships of character.starships">
-          <a (click)="goToLink('starships',starships.id)">
-            {{starships.name}}
+        <td style="text-align:center" *ngFor="let starship of character.starships">
+          <a (click)="goToLink('starships',starship.id)">
+            {{starship.name}}
           </a>
           </td>
     </tr>

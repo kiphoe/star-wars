@@ -52,7 +52,7 @@
       Characters:
     </td>
     <td>
-  <tr *ngFor="let character of film.characters">
+  <tr *ngFor="let character of film.characters" class="linkable">
     <a (click)="goToLink('people',character.id)">
       {{character.name}}
     </a>
@@ -72,7 +72,7 @@
       Species:
     </td>
     <td style="text-align:center" *ngFor="let species of film.species">
-    <img src="https://starwars-visualguide.com/assets/img/species/{{species.id}}.jpg" alt="" class="logo" (click)="goToLink('species',species.id)">
+    <img src="https://starwars-visualguide.com/assets/img/species/{{species.id}}.jpg" alt="" class="logo" onError="this.src='images/noImage.png'" (click)="goToLink('species',species.id)">
     </td>
   <tr >
       <td>
@@ -91,7 +91,7 @@
         Vehicles:
       </td>
       <td style="text-align:center" *ngFor="let vehicles of film.vehicles">
-      <img src="https://starwars-visualguide.com/assets/img/vehicles/{{vehicles.id}}.jpg" alt="" class="logo" (click)="goToLink('vehicles',vehicles.id)">
+      <img src="https://starwars-visualguide.com/assets/img/vehicles/{{vehicles.id}}.jpg" alt="" class="logo" onError="this.src='images/noImage.png'" (click)="goToLink('vehicles',vehicles.id)">
       </td>
     <tr >
         <td>
@@ -110,13 +110,13 @@
           Starships:
         </td>
         <td style="text-align:center" *ngFor="let starship of film.starships">
-        <img src="https://starwars-visualguide.com/assets/img/starships/{{starships.id}}.jpg" alt="" class="logo" (click)="goToLink('starships',starships.id)">
+        <img src="https://starwars-visualguide.com/assets/img/starships/{{starship.id}}.jpg" alt="" class="logo" onError="this.src='images/noImage.png'" (click)="goToLink('starships',starship.id)">
         </td>
       <tr >
           <td>
           </td>
           <td style="text-align:center" *ngFor="let starship of film.starships">
-            <a (click)="goToLink('starships',starships.id)">
+            <a (click)="goToLink('starships',starship.id)">
               {{starship.name}}
             </a>
             </td>
@@ -129,7 +129,7 @@
             Planets:
           </td>
           <td style="text-align:center" *ngFor="let planet of film.planets">
-          <img src="https://starwars-visualguide.com/assets/img/planets/{{planet.id}}.jpg" alt="" class="logo"  (click)="goToLink('planets',planet.id)">
+          <img src="https://starwars-visualguide.com/assets/img/planets/{{planet.id}}.jpg" alt="" class="logo" onError="this.src='images/noImage.png'" (click)="goToLink('planets',planet.id)">
           </td>
         <tr >
             <td>

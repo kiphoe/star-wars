@@ -1,91 +1,130 @@
-<h3>{{planet.name}}</h3>
-<table class="capitalize" border="1">
+<table>
   <tr>
     <td>
-      Rotation Period:
+      <h3>{{planet.name}}</h3>
     </td>
     <td>
-      {{planet.rotation_period}}
+      <button type="submit" (click)='shareApi(planet.name)' mat-raised-button color="accent">
+        <mat-icon>share</mat-icon>
+      </button>
     </td>
   </tr>
+</table>
+<table>
   <tr>
     <td>
-      Orbital Period:
+      <img src="https://starwars-visualguide.com/assets/img/planets/{{id}}.jpg" onError="this.src='images/noImage.png'" alt="" class="profile">
     </td>
-    <td>
-      {{planet.orbital_period}}
-    </td>
+    <table>
+      <tr>
+        <td>
+          Rotation Period:
+        </td>
+        <td>
+          {{planet.rotation_period}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Orbital Period:
+        </td>
+        <td>
+          {{planet.orbital_period}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Diameter:
+        </td>
+        <td>
+          {{planet.diameter}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Climate:
+        </td>
+        <td>
+          {{planet.climate}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Gravity:
+        </td>
+        <td>
+          {{planet.gravity}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Terrain:
+        </td>
+        <td>
+          {{planet.terrain}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Surface Water:
+        </td>
+        <td>
+          {{planet.surface_water}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Population:
+        </td>
+        <td>
+          {{planet.population}}
+        </td>
+      </tr>
+    </table>
   </tr>
-  <tr>
-    <td>
-      Diameter:
-    </td>
-    <td>
-      {{planet.diameter}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Climate:
-    </td>
-    <td>
-      {{planet.climate}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Gravity:
-    </td>
-    <td>
-      {{planet.gravity}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Terrain:
-    </td>
-    <td>
-      {{planet.terrain}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Surface Water:
-    </td>
-    <td>
-      {{planet.surface_water}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Population:
-    </td>
-    <td>
-      {{planet.population}}
-    </td>
-  </tr>
+</table>
+
+<table width=750px>
   <tr>
     <td>
       Residents:
     </td>
+    <td style="text-align:center" *ngFor="let resident of planet.residents">
+      <img src="https://starwars-visualguide.com/assets/img/characters/{{resident.id}}.jpg" onError="this.src='images/noImage.png'" alt="" class="logo"
+        (click)="goToLink('people',resident.id)">
+    </td>
+  <tr>
     <td>
-  <tr *ngFor="let resident of planet.residents">
-    <a (click)="goToLink('people',resident.id)">
-      {{resident.name}}
-    </a>
+    </td>
+    <td style="text-align:center" *ngFor="let resident of planet.residents">
+      <a (click)="goToLink('people',resident.id)">
+        {{resident.name}}
+      </a>
+    </td>
   </tr>
-  </td>
-  </tr>
+</table>
+
+<table width=750px>
   <tr>
     <td>
       Films:
     </td>
+    <td style="text-align:center" *ngFor="let film of planet.films">
+      <img src="https://starwars-visualguide.com/assets/img/films/{{film.id}}.jpg" onError="this.src='images/noImage.png'" alt="" class="logo"
+        (click)="goToLink('film',film.id)">
+    </td>
+  <tr>
     <td>
-  <tr *ngFor="let film of planet.films">
-    <a (click)="goToLink('film',film.id)">
-      {{film.title}}
-    </a>
-  </tr>
-  </td>
+    </td>
+    <td style="text-align:center" *ngFor="let film of planet.films">
+      <a (click)="goToLink('film',film.id)">
+        {{film.title}}
+      </a>
+    </td>
   </tr>
 </table>
+
+<app-add-comment (onNewComment)="addNewComment($event)">
+</app-add-comment>
+
+<app-list-comment [comments]="comments"></app-list-comment>

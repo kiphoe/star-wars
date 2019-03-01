@@ -6,3 +6,8 @@
     border-radius: 256px;
     height: 60px;
 }
+.linkable{
+    color: black;
+    text-decoration:  underline;
+    
+}
