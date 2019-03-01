@@ -1,3 +1,7 @@
 .mat-list-item{
     color: black;
   }
+  .panel-body {
+    overflow: scroll;
+    height: 100px;
+}
